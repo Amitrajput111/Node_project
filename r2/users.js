@@ -23,6 +23,11 @@ const server = http.createServer((req, res) => {
 
   } else if (req.url.toLowerCase() === "/submit-details" &&
         req.method == "POST") {
+          
+        req.on()('data' (chunk) => {
+        console.log (chunk);
+        });
+      
     fs.writeFileSync('user.txt', 'Prashant Jain');
     res.statusCode = 302;
     res.setHeader('Location', '/');
