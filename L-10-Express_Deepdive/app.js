@@ -13,10 +13,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use ((req, res, next)=> {
-//     console.log ("Third Middleware" , req.url, req.method);
-//     res.send ("<h1> Welcome  Amit </h1>");
-// });
 
 app.get("/", (req, res, next) => {
   console.log("Handling / for  GET", req.url, req.method);
@@ -24,11 +20,7 @@ app.get("/", (req, res, next) => {
 });
 app.get("/contact-us", (req, res, next) => {
   console.log("Handling /Contact-us for GET", req.url, req.method);
-  res.send(`<h1> Give  your detail </h1>
-            <form action ="contact-us  method=m"POST">
-        <input type ="text" name ="name" placeholder="Enter your name" />
-        <input type ="email" name ="email" placeholder="Enter your email" />
-           <input type="Submit"/>
+  res.send(`
         `);
 });
 
@@ -41,8 +33,7 @@ app.post ("/contact-us", (req,res,next) => {
 app.use (bodyParser.urlencoded());
 
 app.post ("/contact-us", (req,res,next) => {
-    console.log ("Handling / contact-us for POST", req.url, req.method, req.body);
-    res.send (`<h1> WE wil contact you sooon</h1>`);
+    res.send (``);
 });
 
 
