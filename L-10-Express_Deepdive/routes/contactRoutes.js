@@ -6,9 +6,13 @@ const contactRouter = express.Router();
 
 const rootDir = rfequire ('../utils/pathUtil');
 
-homeRoute.get("/", (req, res, next) => {
+contactRoute.get("/contact-us", (req, res, next) => {
   console.log("Handling / for GET", req.url, req.method);
-  res.sendFile(path.join (rootDir, "views", "home.html"));
+  res.sendFile(path.join (rootDir, "views", "contact-us.html"));
 })
 
-module.exports = homeRouter;
+contactRoute.post("/contact-us", (req, res, next) => {
+  console.log(`path.join (rootDir, "views", "contact-success.html"
+  `)});
+
+module.exports = contactRouter;
