@@ -10,12 +10,15 @@ const rootDir = require("../utils/pathUtils");
 
 
 hostRouter.get("/add-home", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "addHome.html"));
+  res.render("add-home",{pageTitle:'Add home to airbnb'});
 });
 
+const registeredHomes = [];
 hostRouter.post("/add-home", (req, res, next) => {
-  console.log ("Home Registration successfull  for: ", req.body);
-res.sendFile(path.join(rootDir,"views","homeAdded.html"))
-});
+  console.log ("Home Registration successfull  for: ", req.body,req.body.houseName);
+  registeredHomes.push ({houseName: req.body.houseName});
+res.render('homeAdded',{pageTitle:'Home added successfully'});
+})
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registeredHomes = registeredHomes;
