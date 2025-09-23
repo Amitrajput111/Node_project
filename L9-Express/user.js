@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const  userrequestHandler = (req, res) => {
+const userRequestHandler = (req, res) => {
   console.log(req.url, req.method);
 
   if (req.url === "/") {
@@ -38,23 +38,26 @@ const  userrequestHandler = (req, res) => {
       const params = new URLSearchParams(fullBody);
       const bodyObject = Object.fromEntries(params);
       console.log(bodyObject);
-      fs.writeFile('user.txt ', JSON.stringify(bodyObject),error => { console.log ('Data written successfully');
-        fs.writeFileSync("user.txt", "Prashant Jain");
-    res.statusCode = 302;
-    res.setHeader("Location", "/");
-    return res.end();
-
+      fs.writeFile('user.txt', JSON.stringify(bodyObject), (error) => {
+        if (error) {
+          console.log('Error writing file:', error);
+        } else {
+          console.log('Data written successfully');
+        }
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        return res.end();
       });
     });
     
-  } else{
-  res.setHeader("Content-Type", "text/html");
-  res.write("<html>");
-  res.write("<head><title>Complete Coding</title></head>");
-  res.write("<body><h1>Like / Share / Subscribe</h1></body>");
-  res.write("</html>");
-  res.end();
-  };
+  } else {
+    res.setHeader("Content-Type", "text/html");
+    res.write("<html>");
+    res.write("<head><title>Complete Coding</title></head>");
+    res.write("<body><h1>Like / Share / Subscribe</h1></body>");
+    res.write("</html>");
+    res.end();
+  }
 };
 
-module.exports = userrequestHandler; 
+module.exports = userRequestHandler;

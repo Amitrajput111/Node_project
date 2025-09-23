@@ -1,18 +1,21 @@
 //External module
 const express = require('express');
+const path = require('path');
 
 //Local module 
 const contactRouter = express.Router();
 
-const rootDir = rfequire ('../utils/pathUtil');
+const rootDir = require('../utils/pathUtils');
 
-contactRoute.get("/contact-us", (req, res, next) => {
-  console.log("Handling / for GET", req.url, req.method);
-  res.sendFile(path.join (rootDir, "views", "contact-us.html"));
-})
+contactRouter.get("/contact-us", (req, res, next) => {
+  console.log("Handling /contact-us for GET", req.url, req.method);
+  res.sendFile(path.join(rootDir, "views", "contact-Us.html"));
+});
 
-contactRoute.post("/contact-us", (req, res, next) => {
-  console.log(`path.join (rootDir, "views", "contact-success.html"
-  `)});
+contactRouter.post("/contact-us", (req, res, next) => {
+  console.log("Handling /contact-us for POST", req.url, req.method);
+  console.log(req.body);
+  res.sendFile(path.join(rootDir, "views", "contacts-success.html"));
+});
 
 module.exports = contactRouter;
