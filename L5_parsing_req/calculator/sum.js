@@ -1,4 +1,25 @@
-const sumRequestHandler = (req,res) =>{
+const sumRequestHandler = (req, res) => {
+  let body = '';
+  req.on('data', chunk => { body += chunk.toString(); });
+  req.on('end', () => {
+    const params = new URLSearchParams(body);
+    const first = Number(params.get('first'));
+    const second = Number(params.get('second'));
+    const sum = first + second;
+    res.setHeader('Content-Type', 'text/html');
+    res.write(`
+      <html>
+        <head><title>Sum Result</title></head>
+        <body>
+          <h1>Result: ${first} + ${second} = ${sum}</h1>
+          <a href="/calculator">Back to Calculator</a>
+        </body>
+      </html>
+    `);
+    res.end();
+  });
+};
+exports.sumRequestHandler = sumRequestHandler;const sumRequestHandler = (req,res) =>{
  console.log("In Sum Request Handler",req.url);
  const body = [];
  req.on('data', chunk =>
