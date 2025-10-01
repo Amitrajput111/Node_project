@@ -18,14 +18,14 @@ exports.postAddHome = (req, res, next) => {
     currentPage: "homeAdded",
   });
 };
-
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll((registeredHomes) => {
-    res.render("host/host-home-list", {
+  Homes.fetchAll((registeredHomes) =>
+    res.render("store/home-list", {
       registeredHomes: registeredHomes,
-      pageTitle: "Host Homes",
-      currentPage: "host-home-list",
-    });
-  });
+      pageTitle: "Host Homes List",
+      currentPage: "host-homes",
+    })
+  );
 };
+
 

@@ -1,5 +1,14 @@
 
 const Homes = require("../models/home");
+exports.getIndex = (req, res, next) => {
+  Homes.fetchAll((registeredHomes) =>
+    res.render("store/index", {
+      registeredHomes: registeredHomes,
+      pageTitle: "airbnb Home",
+      currentPage: "index",
+    })
+  );
+};
 
 exports.getHomes = (req, res, next) => {
   Homes.fetchAll((registeredHomes) =>
